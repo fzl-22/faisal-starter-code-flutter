@@ -1,5 +1,8 @@
 #!/bin/bash
 
+################################################################
+################################################################
+
 # ANSI color codes
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -20,6 +23,14 @@ check_gsed_installed() {
   if ! command -v gsed &>/dev/null; then
     echo -e "${RED}GNU sed (gsed) is required but not installed. Please install it using Homebrew or another package manager.${NC}"
     exit 1
+  fi
+}
+
+# Check if Flutter is installed
+check_flutter_installed() {
+  if ! command -v flutter &>/dev/null; then
+      echo -e "${RED}Flutter is not installed. Please install Flutter before proceeding.${NC}"
+      exit 1
   fi
 }
 
@@ -59,6 +70,12 @@ validate_domain_name() {
     exit 1
   fi
 }
+
+################################################################
+################################################################
+
+# Check if FLutter is available
+check_flutter_installed
 
 # Check if gsed is available on macOS
 if [ $OS == "Darwin" ]; then
