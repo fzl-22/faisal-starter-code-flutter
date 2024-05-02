@@ -1,13 +1,20 @@
 import 'package:faisal_starter_code_flutter/core/common/transitions/transitions.dart';
 import 'package:faisal_starter_code_flutter/core/injection/injection.dart';
+import 'package:faisal_starter_code_flutter/core/utils/logger.dart';
 import 'package:faisal_starter_code_flutter/src/home/presentation/views/home_screen.dart';
 import 'package:faisal_starter_code_flutter/src/users/presentation/bloc/users_bloc.dart';
 import 'package:faisal_starter_code_flutter/src/users/presentation/views/users_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+part 'observer.router.dart';
+
 class AppRouter {
   static final routerConfig = GoRouter(
+    observers: [
+      RouterObserver(),
+    ],
     initialLocation: HomeScreen.path,
     routes: [
       GoRoute(
