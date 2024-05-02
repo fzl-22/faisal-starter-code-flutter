@@ -29,8 +29,8 @@ check_gsed_installed() {
 # Check if Flutter is installed
 check_flutter_installed() {
   if ! command -v flutter &>/dev/null; then
-      echo -e "${RED}Flutter is not installed. Please install Flutter before proceeding.${NC}"
-      exit 1
+    echo -e "${RED}Flutter is not installed. Please install Flutter before proceeding.${NC}"
+    exit 1
   fi
 }
 
@@ -127,8 +127,17 @@ if [ -n "$files_with_initial_project_name" ] && [ -n "$files_with_initial_domain
     echo "$files_with_initial_project_name" | xargs gsed -i "s/$INITIAL_PROJECT_NAME/$PROJECT_NAME/g"
     echo "$files_with_initial_domain_name" | xargs gsed -i "s/$INITIAL_DOMAIN_NAME/$DOMAIN_NAME/g"
   fi
+
+  # Get all project dependencies
   flutter pub get
+
+  # Run code generator
+  dart run build_runner build
+
+  # Create .env file
   echo BASE_URL=https://reqres.in >.env
+
+  # Clean up
   rm -rf install.sh .git/
 else
   echo -e "${RED}No files found containing \"$INITIAL_PROJECT_NAME\" or \"$INITIAL_DOMAIN_NAME\". Exiting.${NC}"
