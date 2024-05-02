@@ -5,7 +5,9 @@ import 'package:faisal_starter_code_flutter/core/utils/typedef.dart';
 import 'package:faisal_starter_code_flutter/src/users/data/datasources/users_remote_data_source.dart';
 import 'package:faisal_starter_code_flutter/src/users/domain/entities/user.dart';
 import 'package:faisal_starter_code_flutter/src/users/domain/repos/users_repo.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: UsersRepo)
 class UsersRepoImpl extends UsersRepo {
   const UsersRepoImpl(this._remoteDataSource);
 

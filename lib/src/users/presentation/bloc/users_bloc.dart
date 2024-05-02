@@ -2,10 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:faisal_starter_code_flutter/src/users/domain/entities/user.dart';
 import 'package:faisal_starter_code_flutter/src/users/domain/usecases/get_users.dart';
+import 'package:injectable/injectable.dart';
 
 part 'users_event.dart';
 part 'users_state.dart';
 
+@injectable
 class UsersBloc extends Bloc<UsersEvent, UsersState> {
   UsersBloc({
     required GetUsers getUsers,

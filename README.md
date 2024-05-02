@@ -41,24 +41,27 @@ curl -s https://raw.githubusercontent.com/fzl-22/faisal-starter-code-flutter/mas
 
 ## 2 Dependencies
 
-| Package                                                               | Description                                                                              |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [bloc](https://pub.dev/packages/bloc)                                 | State management library that helps implement the BLoC design pattern.                   |
-| [cached_network_image](https://pub.dev/packages/cached_network_image) | Loads and caches network images.                                                         |
-| [dartz](https://pub.dev/packages/dartz)                               | Functional programming in Dart (used for clean error-handling)                           |
-| [equatable](https://pub.dev/packages/equatable)                       | Value-based objects comparison.                                                          |
-| [flutter_bloc](https://pub.dev/packages/flutter_bloc)                 | Flutter Widgets that make it easy to implement the [bloc](https://pub.dev/packages/bloc) |
-| [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)             | Load configuration at runtime from a `.env` file                                         |
-| [flutter_svg](https://pub.dev/packages/flutter_svg)                   | SVG rendering widget from an asset.                                                      |
-| [get_it](https://pub.dev/get_it)                                      | Simple direct Service Locator for dependency injection.                                  |
-| [go_router](https://pub.dev/packages/go_router)                       | Routing package with URL-based API.                                                      |
-| [http](https://pub.dev/packages/http)                                 | Future-based library for making HTTP requests.                                           |
-| [logger](https://pub.dev/packages/logger)                             | Beautiful log printer.                                                                   |
-| [provider](https://pub.dev/packages/provider)                         | A wrapper around `InheritedWidget`. Used for local state-abstraction.                    |
-| [safe_change_notifier](https://pub.dev/packages/safe_change_notifier) | Safer replacement for `ChangeNotifier` and `ValueNotifer`.                               |
-| [bloc_test](https://pub.dev/packages/bloc_test)                       | Testing library for blocs and cubits (_dev_dependencies_)                                |
-| [mocktail](https://pub.dev/packages/mocktail)                         | Mock library which simplifies mocking with null safety support (_dev_dependencies_)      |
-| [very_good_analysis](https://pub.dev/packages/very_good_analysis)     | Lint rules for Dart and Flutter by Very Good Ventures (_dev_dependencies_).              |
+| Package                                                               | Description                                                                                              |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [bloc](https://pub.dev/packages/bloc)                                 | State management library that helps implement the BLoC design pattern.                                   |
+| [cached_network_image](https://pub.dev/packages/cached_network_image) | Loads and caches network images.                                                                         |
+| [dartz](https://pub.dev/packages/dartz)                               | Functional programming in Dart (used for clean error-handling)                                           |
+| [equatable](https://pub.dev/packages/equatable)                       | Value-based objects comparison.                                                                          |
+| [flutter_bloc](https://pub.dev/packages/flutter_bloc)                 | Flutter Widgets that make it easy to implement the [bloc](https://pub.dev/packages/bloc)                 |
+| [flutter_dotenv](https://pub.dev/packages/flutter_dotenv)             | Load configuration at runtime from a `.env` file                                                         |
+| [flutter_svg](https://pub.dev/packages/flutter_svg)                   | SVG rendering widget from an asset.                                                                      |
+| [get_it](https://pub.dev/get_it)                                      | Simple direct Service Locator for dependency injection.                                                  |
+| [go_router](https://pub.dev/packages/go_router)                       | Routing package with URL-based API.                                                                      |
+| [http](https://pub.dev/packages/http)                                 | Future-based library for making HTTP requests.                                                           |
+| [logger](https://pub.dev/packages/logger)                             | Beautiful log printer.                                                                                   |
+| [provider](https://pub.dev/packages/provider)                         | A wrapper around `InheritedWidget`. Used for local state-abstraction.                                    |
+| [safe_change_notifier](https://pub.dev/packages/safe_change_notifier) | Safer replacement for `ChangeNotifier` and `ValueNotifer`.                                               |
+| [bloc_test](https://pub.dev/packages/bloc_test)                       | Testing library for blocs and cubits (_dev_dependencies_)                                                |
+| [build_runner](https://pub.dev/packages/build_runner)                 | A build system for Dart code generation and modular compilation (_dev_dependencies_)                     |
+| [injectable](https://pub.dev/packages/injectable)                     | Code generator for [get_it](https://pub.dev/get_it) (_dev_dependencies_)                                 |
+| [injectable_generator](https://pub.dev/packages/injectable_generator) | A generator for [injectable](https://pub.dev/packages/injectable_generator) library (_dev_dependencies_) |
+| [mocktail](https://pub.dev/packages/mocktail)                         | Mock library which simplifies mocking with null safety support (_dev_dependencies_)                      |
+| [very_good_analysis](https://pub.dev/packages/very_good_analysis)     | Lint rules for Dart and Flutter by Very Good Ventures (_dev_dependencies_).                              |
 
 ## 3. Directory Structures and Architectural Overviews
 
@@ -233,6 +236,20 @@ To get all dependencies, run the following command.
 
 ```bash
 flutter pub get
+```
+
+#### 4.1.3 Run the code generator
+
+To run the code generator, execute this command.
+
+```bash
+dart run build_runner build # one time and exits
+```
+
+or
+
+```bash
+dart run build_runner watch # watch and rebuild as necessary
 ```
 
 ### 4.2 Run project

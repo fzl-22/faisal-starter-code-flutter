@@ -5,6 +5,7 @@ import 'package:faisal_starter_code_flutter/core/utils/typedef.dart';
 import 'package:faisal_starter_code_flutter/src/users/data/models/user_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 abstract class UsersRemoteDataSource {
   const UsersRemoteDataSource();
@@ -12,6 +13,7 @@ abstract class UsersRemoteDataSource {
   Future<List<UserModel>> getUsers();
 }
 
+@LazySingleton(as: UsersRemoteDataSource)
 class UsersRemoteDataSourceImpl implements UsersRemoteDataSource {
   const UsersRemoteDataSourceImpl({
     required http.Client httpClient,

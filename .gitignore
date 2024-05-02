@@ -45,3 +45,7 @@ app.*.map.json
 # Environement variables
 .env
 .*.env
+
+# Generated files
+**/*.config.dart
+
