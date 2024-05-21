@@ -41,7 +41,7 @@ void main() {
       },
       act: (bloc) => bloc.add(const GetUsersEvent()),
       expect: () => [
-        const UsersLoading(),
+        const GettingUsers(),
         const UsersLoaded(users: []),
       ],
       verify: (bloc) {
@@ -59,8 +59,8 @@ void main() {
       },
       act: (bloc) => bloc.add(const GetUsersEvent()),
       expect: () => [
-        const UsersLoading(),
-        UsersError(message: tServerFailure.errorMessage,),
+        const GettingUsers(),
+        GetUsersError(message: tServerFailure.errorMessage,),
       ],
       verify: (bloc) {
         verify(() => getUsers()).called(1);

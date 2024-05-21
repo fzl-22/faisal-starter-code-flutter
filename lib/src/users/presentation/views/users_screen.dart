@@ -35,9 +35,9 @@ class _UsersScreenState extends State<UsersScreen> {
         builder: (context, state) {
           return LayoutBuilder(
             builder: (context, constraints) {
-              if (state is UsersLoading) {
+              if (state is GettingUsers) {
                 return _buildLoading(constraints: constraints);
-              } else if (state is UsersError) {
+              } else if (state is GetUsersError) {
                 return _buildError(
                   message: state.message,
                   constraints: constraints,
