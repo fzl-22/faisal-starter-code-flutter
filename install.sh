@@ -136,9 +136,6 @@ if [ -n "$files_with_initial_project_name" ] && [ -n "$files_with_initial_domain
 
   # Create .env file
   echo BASE_URL=https://reqres.in >.env
-
-  # Clean up
-  rm -rf install.sh .git/
 else
   echo -e "${RED}No files found containing \"$INITIAL_PROJECT_NAME\" or \"$INITIAL_DOMAIN_NAME\". Exiting.${NC}"
   exit 1
@@ -147,3 +144,6 @@ fi
 echo ""
 
 echo -e "${GREEN}✓ Project \"$PROJECT_NAME\" has been created successfully...${NC}"
+
+# Clean up
+rm -rf .git/ $0 ../$0
