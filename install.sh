@@ -134,6 +134,9 @@ if [ -n "$files_with_initial_project_name" ] && [ -n "$files_with_initial_domain
   # Run code generator
   dart run build_runner build
 
+  # Fix analysis issues (if any)
+  dart fix --apply 
+
   # Create .env file
   echo BASE_URL=https://reqres.in >.env
 else
