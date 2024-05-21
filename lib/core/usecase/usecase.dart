@@ -7,7 +7,6 @@ library;
 
 import 'package:faisal_starter_code_flutter/core/utils/typedef.dart';
 
-
 /// [UseCaseWithParams]
 ///
 /// Abstract class for use cases that require parameters for execution.
@@ -83,4 +82,30 @@ abstract class UseCaseWithoutParams<T> {
   ///
   /// Returns a [ResultFuture] containing the result of the use case operation.
   ResultFuture<T> call();
+}
+
+/// [UseCaseStreamWithParams]
+///
+/// [Stream] version of [UseCaseStreamWithParams].
+abstract class UseCaseStreamWithParams<T, Params> {
+  const UseCaseStreamWithParams();
+
+  /// Executes the use case with the provided parameters.
+  ///
+  /// The [params] argument represents the parameters required for the use case.
+  /// Returns a [ResultStream] containing the result of the use case operation.
+  ResultStream<T> call(Params params);
+}
+
+/// [UseCaseStreamWithoutParams]
+///
+/// [Stream] version of [UseCaseStreamWithoutParams].
+abstract class UseCaseStreamWithoutParams<T> {
+  /// Constructs a new instance of the [UseCaseStreamWithoutParams] class.
+  const UseCaseStreamWithoutParams();
+
+  /// Executes the use case without any parameters.
+  ///
+  /// Returns a [ResultStream] containing the result of the use case operation.
+  ResultStream<T> call();
 }
