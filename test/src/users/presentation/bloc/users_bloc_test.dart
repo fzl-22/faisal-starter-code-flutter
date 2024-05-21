@@ -20,7 +20,7 @@ void main() {
   });
 
   // arbitrary failure
-  const tServerFailure = ServerFailure(
+  const tHttpFailure = HttpFailure(
     message: 'Unknown error occured, please try again later',
     statusCode: 505,
   );
@@ -54,13 +54,13 @@ void main() {
       'should emit [UsersLoading, UsersError] when getUsers failed',
       build: () {
         when(() => getUsers())
-            .thenAnswer((invocation) async => const Left(tServerFailure));
+            .thenAnswer((invocation) async => const Left(tHttpFailure));
         return usersBloc;
       },
       act: (bloc) => bloc.add(const GetUsersEvent()),
       expect: () => [
         const GettingUsers(),
-        GetUsersError(message: tServerFailure.errorMessage,),
+        GetUsersError(message: tHttpFailure.errorMessage,),
       ],
       verify: (bloc) {
         verify(() => getUsers()).called(1);

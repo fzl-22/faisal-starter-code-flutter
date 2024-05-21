@@ -46,29 +46,25 @@ class CacheFailure extends Failure {
 
 /// Implementation of [Failure] to handle server-related failures
 ///
-/// [ServerFailure] can be instantiated from an [ServerException] using
-/// [ServerFailure.fromException]
-class ServerFailure extends Failure {
-  const ServerFailure({
+/// [HttpFailure] can be instantiated from an [HttpException] using
+/// [HttpFailure.fromException]
+class HttpFailure extends Failure {
+  const HttpFailure({
     required super.message,
     required this.statusCode,
-    this.prefix = 'Server Exception',
   });
 
-  factory ServerFailure.fromException(ServerException exception) {
-    return ServerFailure(
+  factory HttpFailure.fromException(HttpException exception) {
+    return HttpFailure(
       message: exception.message,
       statusCode: exception.statusCode,
-      prefix: exception.prefix,
     );
   }
 
   final int statusCode;
 
   @override
-  String get errorMessage => '$statusCode $prefix: $message';
-
-  final String prefix;
+  String get errorMessage => '$statusCode: $message';
 }
 
 /// Implementation of [Failure] to handle client-related failures

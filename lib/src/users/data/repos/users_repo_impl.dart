@@ -18,9 +18,9 @@ class UsersRepoImpl extends UsersRepo {
     try {
       final result = await _remoteDataSource.getUsers();
       return Right(result);
-    } on ServerException catch (e) {
+    } on HttpException catch (e) {
       return Left(
-        ServerFailure.fromException(e),
+        HttpFailure.fromException(e),
       );
     } on ClientException catch (e) {
       return Left(

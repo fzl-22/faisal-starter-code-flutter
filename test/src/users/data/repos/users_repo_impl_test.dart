@@ -20,7 +20,7 @@ void main() {
     repoImpl = UsersRepoImpl(remoteDataSource);
   });
 
-  const tServerException = ServerException(
+  const tHttpException = HttpException(
     statusCode: 404,
     message: 'Not Found',
   );
@@ -57,14 +57,14 @@ void main() {
     test(
       'should return a [ServerFailure] if any server related error occured',
       () async {
-        when(() => remoteDataSource.getUsers()).thenThrow(tServerException);
+        when(() => remoteDataSource.getUsers()).thenThrow(tHttpException);
 
         final result = await repoImpl.getUsers();
 
         expect(
           result,
           Left<Failure, List<UserModel>>(
-            ServerFailure.fromException(tServerException),
+            HttpFailure.fromException(tHttpException),
           ),
         );
 

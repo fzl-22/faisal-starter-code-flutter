@@ -1,10 +1,7 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:faisal_starter_code_flutter/core/errors/exceptions.dart';
 import 'package:faisal_starter_code_flutter/core/utils/typedef.dart';
 import 'package:faisal_starter_code_flutter/src/users/data/models/user_model.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 abstract class UsersRemoteDataSource {
@@ -16,45 +13,27 @@ abstract class UsersRemoteDataSource {
 @LazySingleton(as: UsersRemoteDataSource)
 class UsersRemoteDataSourceImpl implements UsersRemoteDataSource {
   const UsersRemoteDataSourceImpl({
-    required http.Client httpClient,
-  }) : _httpClient = httpClient;
+    required Dio dio,
+  }) : _dio = dio;
 
-  final http.Client _httpClient;
+  final Dio _dio;
 
   @override
   Future<List<UserModel>> getUsers() async {
     try {
-      final url = '${dotenv.env['BASE_URL']}/api/users';
-      final response = await _httpClient.get(
-        Uri.parse(url),
-      );
+      const path = '/api/users';
+      final response = await _dio.get<DataMap>(path);
 
-      if (response.statusCode != 200) {
-        throw ServerException(
-          message: response.body,
-          statusCode: response.statusCode,
-        );
-      }
-
-      final responseBody = json.decode(response.body) as DataMap;
-      final responseData = responseBody['data'] as List<dynamic>;
-
-      final users = responseData
-          .map(
-            (map) => UserModel.fromMap(map as DataMap),
-          )
+      final users = (response.data!['data'] as List<dynamic>)
+          .map((user) => UserModel.fromMap(user as DataMap))
           .toList();
 
       return users;
-    } on ServerException {
-      rethrow;
-    } on http.ClientException catch (e) {
-      throw ClientException(
-        message: e.message,
-      );
+    } on DioException catch (e) {
+      throw HttpException.fromDio(e);
     } catch (e) {
-      throw const GeneralException(
-        message: 'An unknown error occurred. Please try again later',
+      throw GeneralException(
+        message: e.toString(),
       );
     }
   }
