@@ -11,9 +11,9 @@ class DioHttpClient {
 
   static BaseOptions get _options => BaseOptions(
         baseUrl: dotenv.env['BASE_URL']!,
-        sendTimeout: const Duration(seconds: 10),
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
+        sendTimeout: const Duration(seconds: 60),
+        connectTimeout: const Duration(seconds: 60),
+        receiveTimeout: const Duration(seconds: 60),
         headers: {
           Headers.contentTypeHeader: Headers.jsonContentType,
           Headers.acceptHeader: Headers.acceptHeader,
