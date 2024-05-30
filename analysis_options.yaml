@@ -4,4 +4,4 @@ linter:
     public_member_api_docs: false
     one_member_abstracts: false
 analyzer:
-  exclude: [lib/**.config.dart, lib/**.freezed.dart]
+  exclude: [lib/**.g.dart, lib/**.config.dart, lib/**.freezed.dart]

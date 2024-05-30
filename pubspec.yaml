@@ -27,11 +27,11 @@ dependencies:
   cupertino_icons: ^1.0.6
   dartz: ^0.10.1
   dio: ^5.4.3+1
+  envied: ^0.5.4+1
   equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.5
-  flutter_dotenv: ^5.1.0
   flutter_svg: ^2.0.10+1
   freezed_annotation: ^2.4.1
   get_it: ^7.6.7
@@ -45,6 +45,7 @@ dependencies:
 dev_dependencies:
   bloc_test: ^9.1.7
   build_runner: ^2.4.9
+  envied_generator: ^0.5.4+1
   flutter_test:
     sdk: flutter
   freezed: ^2.5.2
@@ -57,7 +58,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - .env
     - assets/images/
     - assets/icons/
 

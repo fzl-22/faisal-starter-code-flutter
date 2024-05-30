@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:faisal_starter_code_flutter/core/env/env.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 class DioHttpClient {
@@ -10,7 +10,7 @@ class DioHttpClient {
     ..interceptors.add(_loggerInterceptor);
 
   static BaseOptions get _options => BaseOptions(
-        baseUrl: dotenv.env['BASE_URL']!,
+        baseUrl: Env.baseUrl,
         sendTimeout: const Duration(seconds: 60),
         connectTimeout: const Duration(seconds: 60),
         receiveTimeout: const Duration(seconds: 60),
