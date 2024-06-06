@@ -132,7 +132,7 @@ if [ -n "$files_with_initial_project_name" ] && [ -n "$files_with_initial_domain
   flutter pub get
 
   # Create .env file
-  echo BASE_URL=https://reqres.in >.env
+  printf "BASE_URL=https://reqres.in\n" >.env
 
   # Run code generator
   dart run build_runner build
