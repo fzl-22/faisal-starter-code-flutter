@@ -131,14 +131,15 @@ if [ -n "$files_with_initial_project_name" ] && [ -n "$files_with_initial_domain
   # Get all project dependencies
   flutter pub get
 
+  # Create .env file
+  echo BASE_URL=https://reqres.in >.env
+
   # Run code generator
   dart run build_runner build
 
   # Fix analysis issues (if any)
-  dart fix --apply 
+  dart fix --apply
 
-  # Create .env file
-  echo BASE_URL=https://reqres.in >.env
 else
   echo -e "${RED}No files found containing \"$INITIAL_PROJECT_NAME\" or \"$INITIAL_DOMAIN_NAME\". Exiting.${NC}"
   exit 1
