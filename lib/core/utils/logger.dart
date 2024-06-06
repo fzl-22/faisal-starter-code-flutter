@@ -3,10 +3,14 @@ import 'package:logger/logger.dart';
 /// [AppLogger]
 ///
 /// Provides debug information message. Wrapper of [Logger] API.
+/// This logger will omit any log when in release mode.
 class AppLogger {
   const AppLogger._();
 
-  static final _logger = Logger();
+  static final _logger = Logger(
+    printer: PrettyPrinter(),
+    filter: DevelopmentFilter(),
+  );
 
   /// Log a message at level [Level.debug]
   static void debug(dynamic message) {

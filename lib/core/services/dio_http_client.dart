@@ -1,13 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:faisal_starter_code_flutter/core/env/env.dart';
+import 'package:flutter/foundation.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 
 class DioHttpClient {
   const DioHttpClient._();
 
-  static Dio get instance => Dio(_options)
-    ..interceptors.add(_requestInterceptor)
-    ..interceptors.add(_loggerInterceptor);
+  static Dio get instance {
+    final dio = Dio(_options)..interceptors.add(_requestInterceptor);
+
+    // only log network request when in debug mode
+    if (kDebugMode) dio.interceptors.add(_loggerInterceptor);
+
+    return dio;
+  }
 
   static BaseOptions get _options => BaseOptions(
         baseUrl: Env.baseUrl,
