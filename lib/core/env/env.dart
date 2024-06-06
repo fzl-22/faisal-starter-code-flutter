@@ -9,12 +9,12 @@ part 'env.g.dart';
 /// set `obfuscate` to `true`. Otherwise, do not.
 ///
 /// Example:
-/// 
+///
 /// ```dart
 /// @EnviedField(obfuscate: true)
 /// static const String foo = _Env.foo;
 /// ```
-@Envied(path: '.env', useConstantCase: true, requireEnvFile: true)
+@Envied(useConstantCase: true, requireEnvFile: true)
 abstract class Env {
   @EnviedField()
   static const String baseUrl = _Env.baseUrl;
